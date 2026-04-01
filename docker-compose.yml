@@ -1,0 +1,17 @@
+version: '4.67'
+
+services:
+  postgres:
+    image: postgres:18
+    restart: always
+    environment:
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PSW}
+      POSTGRES_DB: ${SPRING_DATASOURCE_DB}
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql
+volumes:
+  pg_data:
